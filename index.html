@@ -1,38 +1,107 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html>
+<title>Noah Schaffer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, html,p,h4 {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
 
-<head>
-    
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
-<script src="page.js"></script>  
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Noah.jpg");
+  min-height: 95%;
+}
 
-
-</head>
-
+.menu {
+  display: none;
+}
+</style>
 <body>
 
-  <div class="sidenav">
-    <a href="#">Home</a>
-    <a href="#">Projects</a>
-  </div>
-  
-  <div class="content">
-    <div class="info">
-    <div><h1>Noah Schaffer</h1></div>
-    
-    <div class=personalImage><img src="noah.jpeg" height="200" width="200"></div>
-    <div>
-    <p>I am a third year BS/MS student in computer science at Northwestern University. I currently do work in the <a href="https://interactiveaudiolab.github.io"> Interactive Audio Lab</a> </p>
-    <p>My current work is in deep audio source separation. My research interests lie at the intersection of Machine Learning and Digital Signal Processing, specifically Auditory Scene Analysis and Sound Event Detection. </p> 
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">HOME</a>
     </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
     </div>
-    
+    <div class="w3-col s3">
+      <a href="#projects" class="w3-button w3-block w3-black">PROJECTS</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#teaching" class="w3-button w3-block w3-black">TEACHING</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">Noah<br>Schaffer</span>
+  </div>
+  <div class="w3-display w3-bottom w3-center w3-text-white w3-xxlarge">
+    <a  href='https://github.com/noahschaffer'><i class="fa fa-github w3-hover-opacity"></i></a>
+    <a  href='https://www.linkedin.com/in/noahschaffer/'><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a  href='mailto:noahschaffer2022@u.northwestern.edu'><i class="fa fa-envelope w3-hover-opacity"></i></a>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h3 class="w3-center w3-padding-64">ABOUT</h3>
+    <p>I am a fourth year BS/MS student at Northwestern University. I am currently a researcher in the <a  href='https://interactiveaudiolab.github.io/'>Interactive Audio Lab<a> under the supervision of 
+      <a href='https://bryan-pardo.github.io/'>Prof. Bryan Pardo</a> and <a href='https://ethman.github.io/'>Ethan Manilow</a> doing work in audio source separation
+    </p>
+    <p>My research interests lie at the intersection of Machine Learning and Digital Signal Processing,specifically generative models for audio, sound event detection, and auditory scene analysis.</p>
 
   </div>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="projects">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h3 class="w3-center w3-padding-48">PROJECTS</h3>
+    
+    <p>NUSSL</p> 
+    
+  </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="teaching">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h3 class="w3-center w3-padding-48">TEACHING</h3>
+    
+    <h4>Spring 2021 - CS 349</h4> 
+    <p>Peer Mentor under professor Ollie Cossiart. Helped to redesign the deep learning homework</p>
+    
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
 
 
 
+</body>
 </html>

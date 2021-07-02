@@ -1,113 +1,16 @@
-* {
-    
-    box-sizing: border-box;
-    font-family: 'IBM Plex Serif', serif;
 
-  }
-
-
-  
-body {
-  margin: 0;
-  
- 
-}
-
-/* Style the side navigation */
-.sidenav {
-  background-image: linear-gradient(to right, #1a1919 0%, rgba(32, 32, 32, 0.849) 100%);
+body, html {
   height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
+  font-family: "Inconsolata", sans-serif;
 }
 
-
-/* Side navigation links */
-.sidenav a {
-  background-image: linear-gradient(to right, #434343 0%,rgba(53,53,53 0.75) 100%);
-  color: white;
-  padding: 16px;
-  text-decoration: none;
-  display: block;
-  background: none;
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/coffeehouse.jpg");
+  min-height: 75%;
 }
 
-
-
-/* Change color on hover */
-.sidenav a:hover {
-  background-image: linear-gradient(to left, #dadada 0%, white 100%);
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the content */
-.content {
-  background-image: url(background.png);
-  margin-left: 200px;
-  padding-left: 20px;
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
-  height: 100%;
-  width: auto;
-  position: fixed;
-}
-
-.content h1{
-
-  font-size: 30;
-  background: none;
-}
-
-.info p{
-  padding-top: 10px;
-  background: none;
-  width: 100%;
-  text-align:justify;
-  text-justify: inter-word;
-}
-.info a {
-  background: none;
-  color: blue;
-  text-decoration: none;
-  text-align:justify;
-
-}
-/* Style the footer */
-.footer {
-  padding: 10px;
-}
-
-.info{
-  margin: auto;
-  box-shadow: 0px 0px 5px 5px rgb(196, 195, 195);
-  background-color: rgba(236, 236, 236, 0.925);
-  width: 60%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 600px;
-  
-
-}
-
-.personalImage{
-  margin: auto;
-  width: 220px;
-  height:220px;
-  margin-bottom: 10px;
-  border-radius:50%;
-}
-
-.personalImage img {
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius:50%;
+.menu {
+  display: none;
 }
