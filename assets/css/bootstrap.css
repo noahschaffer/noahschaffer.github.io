@@ -635,6 +635,14 @@ pre code {
   padding-left: 15px;
 }
 
+@media screen and (max-width:480px){
+
+  .photo-icons {
+  margin-bottom:15%
+}
+
+}
+
 .col {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
