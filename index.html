@@ -3,277 +3,1041 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
-  
+  <meta name="description" content="Noah Schaffer is a PhD student in Computer Science at Dartmouth researching human-AI co-creation for music, generative audio editing, and source separation.">
   <title>Noah Schaffer</title>
 
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-  
-  <link rel="stylesheet" type="text/css" href="assets/css/themify-icons.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-
-  <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/vendor/owl-carousel/owl.carousel.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/vendor/perfect-scrollbar/css/perfect-scrollbar.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/vendor/nice-select/css/nice-select.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/vendor/fancybox/css/jquery.fancybox.min.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/css/virtual.css">
-  
-  <link rel="stylesheet" type="text/css" href="assets/css/topbar.virtual.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Lora<:wght@400;500;600&amp;family=Nunito:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    :root {
+      --bg: #f8f5ee;
+      --bg-alt: #f1ede2;
+      --panel: rgba(255, 255, 255, 0.82);
+      --panel-strong: #fffdf9;
+      --line: rgba(27, 67, 50, 0.14);
+      --line-strong: rgba(27, 67, 50, 0.24);
+      --text: #173228;
+      --muted: #5f6f66;
+      --accent: #2D6A4F;
+      --accent-dark: #102d22;
+      --accent-soft: #d8f3dc;
+      --accent-mid: #95d5b2;
+      --shadow: 0 24px 60px rgba(20, 40, 31, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(149, 213, 178, 0.22), transparent 32%),
+        radial-gradient(circle at top right, rgba(216, 243, 220, 0.75), transparent 28%),
+        linear-gradient(180deg, #fcfaf5 0%, var(--bg) 46%, #f3efe5 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-shell {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      background: rgba(255, 253, 249, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 999px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 36px rgba(16, 28, 23, 0.08);
+    }
+
+    .brand {
+      font-family: "Lora", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--accent-dark);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 14px 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 24px rgba(45, 106, 79, 0.22);
+    }
+
+    .cv-link:hover,
+    .cv-link:focus-visible {
+      transform: translateY(-1px);
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .content-card,
+    .publications,
+    .teaching,
+    .site-footer {
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      border-radius: 36px;
+      padding: 46px 42px 44px;
+      background: rgba(255, 253, 249, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 253, 249, 0.85);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+    }
+
+    .hero-links-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 16px;
+      border-top: 1px solid rgba(27, 67, 50, 0.08);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-mountains {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-mountains svg {
+      position: absolute;
+      bottom: -80px;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: .4;
+      transform: translateX(-10%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      font-family: "Lora", serif;
+      font-size: clamp(3rem, 7vw, 5.25rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+    .hero-copy em,
+    .about-copy em {
+      color: #1b4332;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .hero-copy p {
+      margin: 0;
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 0;
+    }
+
+    .hero-tag {
+      padding: 10px 14px;
+      border: 1px solid rgba(45, 106, 79, 0.16);
+      border-radius: 999px;
+      background: rgba(216, 243, 220, 0.46);
+      font-size: 0.93rem;
+      color: #234a39;
+    }
+
+    .hero-links-bar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--accent-dark);
+      font-size: 1.05rem;
+      text-decoration: none;
+    }
+
+    .hero-links-bar a:hover,
+    .hero-links-bar a:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(45, 106, 79, 0.34);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 14px 24px rgba(45, 106, 79, 0.18);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
+      gap: 26px;
+      margin-bottom: 28px;
+    }
+
+    .content-card {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(45, 106, 79, 0.32), transparent);
+    }
+
+    .about-copy p {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #365448;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-copy p a,
+    .about-copy a,
+    .sidebar-card a,
+    .pub-entry a,
+    .teaching-card a,
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .hero-copy p a:hover,
+    .about-copy a:hover,
+    .sidebar-card a:hover,
+    .pub-entry a:hover,
+    .teaching-card a:hover,
+    .footer-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .sidebar-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(27, 67, 50, 0.08);
+    }
+
+    .sidebar-card h3 {
+      margin: 0 0 14px;
+      font-family: "Lora", serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .news-item {
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(27, 67, 50, 0.1);
+    }
+
+    .news-item:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .news-date {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .news-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #496456;
+    }
+
+    .publications,
+    .teaching,
+    .site-footer {
+      border-radius: 34px;
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    .pub-intro {
+      margin: -4px 0 24px;
+      color: #496456;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .pub-year-group + .pub-year-group {
+      margin-top: 22px;
+    }
+
+    .pub-year {
+      margin: 0 0 4px;
+      font-family: "Lora", serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+    }
+
+    .pub-count {
+      margin: 0 0 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #61756a;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pub-entry {
+      padding: 20px 22px;
+      border: 1px solid rgba(27, 67, 50, 0.12);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 22px rgba(17, 35, 27, 0.04);
+    }
+
+    .pub-entry-title {
+      margin: 0 0 8px;
+      font-family: "Lora", serif;
+      font-size: 1.26rem;
+      line-height: 1.4;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .pub-entry-title-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .pub-venue-badge {
+      display: inline-block;
+      flex: 0 0 auto;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1b4332;
+      border: 1px solid var(--accent-mid);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    .pub-scholar-link {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(27, 67, 50, 0.1);
+      font-size: 0.95rem;
+      font-family: "Lora", serif;
+      font-style: italic;
+      color: #496456;
+    }
+
+    .pub-entry-title a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .pub-entry-title a:hover {
+      color: var(--accent);
+    }
+
+    .pub-entry-meta,
+    .pub-entry-venue {
+      margin: 0 0 8px;
+      color: #496456;
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    .pub-entry-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .pub-entry-links a,
+    .pub-entry-links button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 67, 50, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--accent);
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pub-entry-links a:hover,
+    .pub-entry-links button:hover,
+    .pub-entry-links a:focus-visible,
+    .pub-entry-links button:focus-visible {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 10px 18px rgba(33, 72, 54, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .bibtex {
+      margin: 14px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(27, 67, 50, 0.1);
+      color: #486153;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .teaching-card {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(27, 67, 50, 0.08);
+    }
+
+    .teaching-term {
+      margin-bottom: 10px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .teaching-card h3 {
+      margin: 0 0 6px;
+      font-family: "Lora", serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .teaching-card p {
+      margin: 0;
+      color: #496456;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 0;
+    }
+
+    .footer-name {
+      font-family: "Lora", serif;
+      font-size: 1.05rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 22px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(27, 67, 50, 0.22);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      z-index: 30;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      background: var(--accent);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .section-grid,
+      .teaching-grid,
+      .site-footer {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-sidebar {
+        flex-direction: row;
+        border-radius: 24px;
+      }
+
+      .hero-photo {
+        max-width: 200px;
+      }
+
+      .hero-copy {
+        border-radius: 24px;
+      }
+
+      .site-footer {
+        display: grid;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-shell {
+        width: min(var(--max-width), calc(100% - 20px));
+        padding-top: 12px;
+      }
+
+      .site-header {
+        align-items: flex-start;
+        border-radius: 28px;
+        padding: 16px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        padding-top: 12px;
+        justify-content: flex-start;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .content-card,
+      .publications,
+      .teaching,
+      .site-footer {
+        border-radius: 24px;
+      }
+
+      .hero-copy,
+      .content-card,
+      .publications,
+      .teaching,
+      .site-footer {
+        padding: 24px 20px;
+      }
+
+      .hero-card {
+        min-height: 640px;
+        padding: 28px 22px 168px;
+      }
+
+      .hero-copy {
+        max-width: none;
+      }
+
+      .hero-map {
+        justify-content: center;
+        align-items: flex-end;
+        padding: 90px 10px 26px;
+      }
+
+      .teaching-grid {
+        gap: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="theme-red">
-  
-  <!-- Back to top button -->
-  <div class="btn-back_to_top">
-    <span class="ti-arrow-up"></span>
-  </div>
-  
-  <!-- Setting button -->
-  <div class="config">
-    <div class="template-config">
-      <!-- Settings -->
-      <div class="d-block">
-        <button class="btn btn-fab btn-sm" id="sideel" title="Settings"><span class="ti-settings"></span></button>
-      </div>
-      <!-- Puschase -->
-      <div class="d-block">
-        <a href="https://macodeid.com/projects/virtual-folio/" class="btn btn-fab btn-sm" title="Get this template" data-toggle="tooltip" data-placement="left"><span class="ti-download"></span></a>
-      </div>
-    </div>
-    <div class="set-menu">
-      <p>Select Color</p>
-      <div class="color-bar" data-toggle="selected">
-        <span class="color-item bg-theme-red selected" data-class="theme-red"></span>
-        <span class="color-item bg-theme-blue" data-class="theme-blue"></span>
-        <span class="color-item bg-theme-green" data-class="theme-green"></span>
-        <span class="color-item bg-theme-orange" data-class="theme-orange"></span>
-        <span class="color-item bg-theme-purple" data-class="theme-purple"></span>
-      </div>
-    </div>
-  </div>
-  
-  <div class="vg-page page-home" id="home">
-    <!-- Navbar -->
-    <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
-      <div class="container">
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
-          <span class="ti-menu"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navbar">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="#about" class="nav-link" data-animate="scrolling">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#portfolio" class="nav-link" data-animate="scrolling">Publications</a>
-            </li>
-            <li class="nav-item">
-              <a href="#blog" class="nav-link" data-animate="scrolling">Teaching</a>
-            </li>
-          </ul>
-          <ul class="nav ml-auto">
-          </ul>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#home">Noah Schaffer</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#publications">Publications</a>
+        <a class="nav-link" href="#teaching">Teaching</a>
+        <a class="cv-link" href="CV.pdf">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-mountains" aria-hidden="true">
+          <svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" role="presentation" preserveAspectRatio="xMidYMax meet">
+                <defs>
+                  <linearGradient id="skyGlow" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.92"/>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+
+                <rect x="0" y="0" width="960" height="620" fill="url(#skyGlow)"/>
+
+                <g fill="none" stroke="#157a47" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M26 396 C72 396, 98 396, 126 388 C154 378, 176 362, 200 338 C224 314, 246 292, 272 288 C298 284, 322 302, 346 278 C370 252, 394 202, 420 150 C440 112, 458 94, 476 94 C494 94, 512 112, 532 148 C558 198, 582 248, 606 276 C630 300, 654 284, 680 286 C706 290, 730 314, 754 338 C778 360, 800 376, 828 386 C856 394, 882 396, 928 396" stroke-width="9" stroke-opacity="0.95"/>
+                  <path d="M24 424 C70 424, 96 424, 124 418 C152 410, 176 394, 200 372 C224 350, 248 330, 272 326 C298 324, 322 340, 346 318 C370 292, 392 248, 418 198 C440 162, 458 142, 476 142 C494 142, 512 162, 534 198 C558 244, 580 288, 604 314 C628 336, 652 322, 678 322 C704 324, 730 346, 754 368 C778 390, 800 406, 826 414 C854 422, 880 424, 928 424" stroke-width="8" stroke-opacity="0.85" transform="translate(0, 10)"/>
+                  <path d="M22 452 C68 452, 96 452, 124 446 C152 438, 176 424, 200 404 C224 384, 248 364, 272 360 C298 358, 322 374, 346 352 C368 330, 392 290, 416 244 C438 210, 458 190, 476 190 C494 190, 512 210, 534 244 C558 286, 580 326, 602 350 C626 372, 650 360, 676 358 C704 358, 730 378, 754 398 C778 416, 800 430, 826 440 C854 448, 880 452, 928 452" stroke-width="7" stroke-opacity="0.75" transform="translate(0, 20)"/>
+                  <path d="M20 480 C68 480, 96 480, 124 476 C152 470, 176 456, 200 438 C224 420, 248 400, 272 396 C296 394, 320 408, 344 390 C368 368, 390 334, 414 292 C438 258, 456 238, 476 238 C496 238, 514 258, 536 292 C560 332, 582 368, 604 392 C628 412, 652 400, 678 398 C706 398, 730 414, 754 432 C778 450, 800 462, 826 470 C854 478, 880 480, 928 480" stroke-width="7" stroke-opacity="0.65" transform="translate(0, 30)"/>
+                  <path d="M18 508 C66 508, 96 508, 124 506 C152 500, 176 488, 200 472 C224 456, 248 436, 272 432 C296 430, 318 442, 342 426 C366 408, 388 378, 412 340 C436 306, 456 286, 476 286 C496 286, 516 308, 538 340 C562 376, 582 410, 604 430 C628 448, 652 438, 678 436 C706 436, 730 450, 754 466 C778 482, 800 494, 826 500 C854 506, 880 508, 928 508" stroke-width="6" stroke-opacity="0.55" transform="translate(0, 40)"/>
+                  <path d="M16 536 C64 536, 96 536, 124 534 C152 530, 176 520, 200 506 C224 490, 248 470, 272 468 C294 466, 318 478, 340 464 C364 446, 388 418, 410 382 C434 350, 454 332, 476 332 C498 332, 518 352, 540 384 C562 416, 582 446, 604 462 C628 478, 652 470, 678 468 C706 468, 730 480, 754 494 C778 508, 802 518, 828 526 C856 534, 882 536, 928 536" stroke-width="5" stroke-opacity="0.4" transform="translate(0, 50)"/>
+                  <path d="M16 536 C64 536, 96 536, 124 534 C152 530, 176 520, 200 506 C224 490, 248 470, 272 468 C294 466, 318 478, 340 464 C364 446, 388 418, 410 382 C434 350, 454 332, 476 332 C498 332, 518 352, 540 384 C562 416, 582 446, 604 462 C628 478, 652 470, 678 468 C706 468, 730 480, 754 494 C778 508, 802 518, 828 526 C856 534, 882 536, 928 546" stroke-width="4" stroke-opacity="0.4" transform="translate(0, 50)"/>
+                </g>
+              </svg>
         </div>
-      </div>
-    </div> <!-- End Navbar -->
 
-  </div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">PhD Student · Computer Science · Dartmouth</div>
+            <h1>Noah<br>Schaffer</h1>
+            <p>I’m a PhD student in Computer Science at 
+              <a href="https://home.dartmouth.edu/">Dartmouth College</a> 
+              and a member of the <a href="https://www.sahaslab.com/">SAHAS Lab</a>, 
+              advised by <a href="https://nsingh1.host.dartmouth.edu/">Nikhil Singh</a>.
+               My research focuses on designing Creative AI systems that are <em>interactive</em>, 
+              <em>controllable</em>, and <em>interpretable</em>.</p> 
 
-  <div class="text-center wow fadeInDown">
-    <h1 class="fw-medium" style="font-size:50px">Noah Schaffer</h1>
-  </div>
-  
-  <div class="page-about" id="about">
-    <div class="container py-5">
-      <div class="row">
-        
-        <div class="col-lg-4 py-3 photo-icons">
-          <div class="img-place wow fadeInUp">
-            <img src="assets/img/noah_2023.png" alt="">
-            <div style="font-size:40px">
-              <a  href='https://github.com/noahschaffer'><i class="fa fa-github "></i></a>
-              <a  href='https://www.linkedin.com/in/noahschaffer/'><i class="fa fa-linkedin "></i></a>
-              <a  href='mailto:noah.schaffer.gr@dartmouth.edu'><i class="fa fa-envelope "></i></a>
-              <a  href='https://twitter.com/noahaschaffer'><i class="fa fa-twitter "></i></a>
-              <a  href='CV.pdf' style="text-decoration:none"><strong class = "">CV</strong></a>
+            <div class="hero-tags" aria-label="Research areas">
+              <span class="hero-tag">Co-creation</span>
+              <span class="hero-tag">Controllable generation</span>
+              <span class="hero-tag">Interpretable discovery</span>
+            </div>
+          </div>
+
+          <div class="hero-sidebar">
+            <div class="hero-photo">
+              <img src="assets/img/noah_2023.png" alt="Portrait of Noah Schaffer">
+            </div>
+            <div class="hero-links-bar">
+              <a href="https://github.com/noahschaffer" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/in/noahschaffer/" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              <a href="mailto:noah.schaffer.gr@dartmouth.edu" aria-label="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+              <a href="https://twitter.com/noahaschaffer" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-          <h1 class="fw-light">Bio</h1>
-          <h5 class="fg-theme fw-medium">Hi! I'm Noah!</h5>
-          <p>I am a first-year PhD student in Computer Science at Dartmouth College. 
-            I am a member of the <a href='https://www.sahaslab.com/'>SAHAS Lab</a>, 
-            advised by <a href= 'https://nsingh1.host.dartmouth.edu/'> Nikhil Singh </a>. I am broadly intersted in Human-AI co-creation for music. 
-             My current research focuses on control protocols for music generation and generative audio editing. </p>
+      <section class="section-grid">
+        <div class="content-card" id="about">
+          <div class="section-label">About</div>
+          <div class="about-copy">
+            <p>I view AI as a way to <em>enhance</em> and <em>expand</em> the creative workflows of musicians. 
+              My work spans music editing, mechanistic interpretability, and 
+          control protocols for generation, aiming to bridge the gap between what generative models produce and what musicians actually 
+          want.</p>
+            </p>
+            <p>Before Dartmouth, I completed my BS/MS in Computer Science at Northwestern University, where I worked in the <a href="https://interactiveaudiolab.github.io/">Interactive Audio Lab</a> with <a href="https://bryan-pardo.github.io/">Bryan Pardo</a> and <a href="https://ethman.github.io/">Ethan Manilow</a> on source separation and audio enhancement.</p>
+            <p>Much of this work is inspired by life as a musician. Outside of lab, I am often playing guitar
+               or seeing live music — you'll find me at any 
+              <a href="https://billybase.net/user-stats/noahschaffer/">Billy Strings show</a> 
+              within a three-hour radius. I also spent four years as a member of the 
+              <a href="https://www.nudrumline.org/">Northwestern Drumline</a>.</p>
 
-          <p>I completed my BS/MS in Computer Science at Northwestern University, where I had the pleasure of working in the 
-             <a  href='https://interactiveaudiolab.github.io/'>Interactive Audio Lab<a> under the supervision of 
-            <a href='https://bryan-pardo.github.io/'>Prof. Bryan Pardo</a> and 
-            <a href='https://ethman.github.io/'> Dr. Ethan Manilow</a>. My research focused on audio enhancement and source separation. </p>
-
-          <p> Much of my research interests are inspired by my own experiences as a musician.
-             I spend much of my free time playing guitar and am an avid fan of live music. 
-             (I can usually be found at any <a href='https://billybase.net/user-stats/noahschaffer/'> Billy Strings show <a> within about 3 hours of where I reside).
-              I also spent many years as a percussionist, including four amazing years as a member of the <a href="https://www.nudrumline.org/">Northwestern Drumline.</a>  </p>
-
-          <p>Outside of music, I love to spend as much time outside as possible. I spend most weekends hiking or skiing in the New Hampshire/Vermont area. 
-            I also can be found in the kitchen, where I love to cook and roast coffee or in the gym where I attempt to compete in the sport of weightlifting.
-          </p>
-
-        </div>
-      </div>
-    </div>
-    
-    <div class="container pt-5">
-
-        <div class="text-center wow fadeInRight">
-          <h2 class="fw-normal">News</h2>
-          <ul class="timeline mt-4 pr-md-5">
-            <li>
-              <div class="title">January 2023</div>
-              <div class="details">
-                <p>I <a href='https://www.youtube.com/watch?v=58GLFjRZ1VI' >presented my work in Music Separation Enhancement</a> to the MILA Music+AI Reading Group!</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">July 2022</div>
-              <div class="details">
-                <p>My paper <a href='https://archives.ismir.net/ismir2022/paper/000093.pdf'>"Music Separation Enhancement with Generative Modeling"</a> was accepted to <a href="https://ismir2022.ismir.net/">ISMIR 2022</a></p>
-              </div>
-            </li>
-            <li>
-              <div class="title">June 2022</div>
-              <div class="details">
-                <p>I graduated Magna Cum Laude from Northwestern with a BS/MS in Computer Science</p>
-              </div>
-            </li>
-          </ul>
+            <p>When I'm not playing, seeing, or researching music, I'm usually  hiking 
+                or skiing somewhere in New Hampshire or Vermont, roasting coffee, cooking, 
+                or attempting to compete in Olympic weightlifting.</p>
+          </div>
         </div>
 
-      </div>
+        <div class="sidebar-card">
+          <h3>News</h3>
+          <div class="news-list">
+                        <div class="news-item">
+              <span class="news-date">September 2025</span>
+              <p>I started my PhD at Dartmouth!</p>
+            </div>
+            <div class="news-item">
+              <span class="news-date">January 2023</span>
+              <p>I <a href="https://www.youtube.com/watch?v=58GLFjRZ1VI">presented my work in Music Separation Enhancement</a> to the MILA Music+AI Reading Group.</p>
+            </div>
+            <div class="news-item">
+              <span class="news-date">July 2022</span>
+              <p>My paper <a href="https://archives.ismir.net/ismir2022/paper/000093.pdf">“Music Separation Enhancement with Generative Modeling”</a> was accepted to <a href="https://ismir2022.ismir.net/">ISMIR 2022</a>.</p>
+            </div>
+            <div class="news-item">
+              <span class="news-date">June 2022</span>
+              <p>I graduated Magna Cum Laude from Northwestern with a BS/MS in Computer Science.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section class="publications" id="publications">
+        <div class="section-label">Publications</div>
+        <p class="pub-intro">Selected publications. <a href="https://scholar.google.com/">For a complete list, see Google Scholar.</a></p>
+
+        <div class="pub-year-group">
+          <h2 class="pub-year">2022</h2>
+          <p class="pub-count">1 publication</p>
+
+          <div class="pub-list">
+            <article class="pub-entry">
+              <h3 class="pub-entry-title">
+                <span class="pub-entry-title-text"><a href="https://interactiveaudiolab.github.io/assets/papers/ismir2022-schaffer-et-al.pdf">Music Separation Enhancement with Generative Modeling</a></span>
+                <span class="pub-venue-badge">ISMIR 2022</span>
+              </h3>
+              <p class="pub-entry-meta"><strong>Noah Schaffer</strong>, Boaz Cogan, Ethan Manilow, Max Morrison, Prem Seetharaman, Bryan Pardo</p>
+              <p class="pub-entry-venue">Proceedings of the 23rd International Society for Music Information Retrieval Conference</p>
+
+              <div class="pub-entry-links">
+                <a href="https://interactiveaudiolab.github.io/assets/papers/ismir2022-schaffer-et-al.pdf">Paper</a>
+                <a href="https://interactiveaudiolab.github.io/project/msg.html">Website</a>
+                <a href="https://github.com/interactiveaudiolab/MSG">Code</a>
+                <button type="button" data-bib-toggle aria-expanded="false">BibTeX</button>
+              </div>
+
+              <pre class="bibtex" hidden>@inproceedings{schaffer2022music,
+  title     = {Music Separation Enhancement with Generative Modeling},
+  author    = {Schaffer, Noah and Cogan, Boaz and Manilow, Ethan and Morrison, Max and Seetharaman, Prem and Pardo, Bryan},
+  booktitle = {Proceedings of the 23rd International Society for Music Information Retrieval Conference},
+  year      = {2022}
+}</pre>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="teaching" id="teaching">
+        <div class="section-label">Teaching</div>
+        <div class="teaching-grid">
+          <article class="teaching-card">
+            <div class="teaching-term">Spring 2022</div>
+            <h3>CS 396/496 · Deep Learning</h3>
+            <p>Peer Mentor at Northwestern University under <a href="https://bryan-pardo.github.io/">Bryan Pardo</a>.</p>
+          </article>
+          <article class="teaching-card">
+            <div class="teaching-term">Fall 2021</div>
+            <h3>CS 349 · Machine Learning</h3>
+            <p>Peer Mentor at Northwestern University under <a href="https://bryan-pardo.github.io/">Bryan Pardo</a> and <a href="https://zachwd.com/">Zach Wood-Doughty</a>.</p>
+          </article>
+          <article class="teaching-card">
+            <div class="teaching-term">Spring 2021</div>
+            <h3>CS 349 · Machine Learning</h3>
+            <p>Peer Mentor at Northwestern University under <a href="https://compphotolab.northwestern.edu/people/oliver-ollie-cossairt/">Ollie Cossairt</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-name">Noah Schaffer · Dartmouth Computer Science</div>
+      <div class="footer-links">
+        <a href="https://github.com/noahschaffer">GitHub</a>
+        <a href="mailto:noah.schaffer.gr@dartmouth.edu">Email</a>
+        <a href="CV.pdf">CV</a>
+      </div>
+    </footer>
   </div>
 
-  
-  <!-- Projects page -->
-  <div class="vg-page page-portfolio" id="portfolio">
-    <h1 class="text-center fw-normal wow fadeInUp">Publications</h1>
-    <div class="container">
-      <div class="row post-grid">
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
-          <div class="card">
-            <div class="img-place">
-              <img src="assets/img/MSG.png" alt="">
-            </div>
-            <div class="caption">
-              <h4 class="text-center">Music Separation Enhancement with Generative Modeling</h4>
-              <div class='text-center'>
-              <a href='https://interactiveaudiolab.github.io/assets/papers/ismir2022-schaffer-et-al.pdf' class="fg-theme fw-medium" style='margin-right:5px'>Paper</a>
-              <a href="https://master.d3neehbzr2rbmh.amplifyapp.com/" class="fg-theme fw-medium" style='margin-left: 5px'>Website</a>
-              </div>
-              <span class="post-date"><span class="sr-only">Published on</span> ISMIR 2022</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp">
-        </div>
+  <script>
+    const navToggle = document.querySelector(".nav-toggle");
+    const siteNav = document.querySelector("#site-nav");
+    const backToTop = document.querySelector(".back-to-top");
 
-      </div>
-    </div>
-  </div> <!-- End Portfolio page -->
-  
-  
-  <!-- Teaching -->
-  <div class="vg-page page-blog" id="blog">
-    <div class="container pt-5">
-    <div class="text-center wow fadeInRight">
-      <h1 class="fw-normal">Teaching</h1>
-      <ul class="timeline mt-4 pr-md-5">
-        <li>
-          <div class="title">Spring 2022</div>
-          <div class="details">
-            <h5>CS 396/496 - Deep Learning</h5>
-            <small class="fg-theme">Northwestern University</small>
-            <p>Peer Mentor under professor  <a href='https://bryan-pardo.github.io/'>Bryan Pardo<a></p>
-          </div>
-        </li>
-        <li>
-          <div class="title">Fall 2021</div>
-          <div class="details">
-            <h5>CS 349 - Machine Learning</h5>
-            <small class="fg-theme">Northwestern University</small>
-            <p> Peer Mentor under professors  <a href='https://bryan-pardo.github.io/'>Bryan Pardo</a> and <a href='https://zachwd.com/'>Zach Wood-Doughty</a></p>
-          </div>
-        </li>
-        <li>
-          <div class="title">Spring 2021</div>
-          <div class="details">
-            <h5>CS 349 - Machine Learning</h5>
-            <small class="fg-theme">Northwestern University</small>
-            <p> Peer Mentor under professor <a href="https://compphotolab.northwestern.edu/people/oliver-ollie-cossairt/">Ollie Cossairt</a></p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    </div>
-  </div> <!-- End blog -->
-  
-  
-  <!-- Footer -->
-  <div class="vg-footer">
-    <h1 class="text-center">Noah Schaffer</h1>
-    <div class="container">
-      <div class="row">
+    if (navToggle && siteNav) {
+      navToggle.addEventListener("click", function () {
+        const isOpen = siteNav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+      });
 
-        <div class="col-12">
-          <p class="text-center mb-0 mt-4"> This template is made with <span class="ti-heart fg-theme-red"></span> by <a href="https://www.macodeid.com/">MACode ID</a></p>
-        </div>
-      </div>
-    </div>
-  </div> <!-- End footer -->
-  
-  
-  <script src="assets/js/jquery-3.5.1.min.js"></script>
-    
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-    
-  <script src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
-    
-  <script src="assets/vendor/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    
-  <script src="assets/vendor/isotope/isotope.pkgd.min.js"></script>
-    
-  <script src="assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
-    
-  <script src="assets/vendor/fancybox/js/jquery.fancybox.min.js"></script>
+      siteNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          siteNav.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
 
-  <script src="assets/vendor/wow/wow.min.js"></script>
+    document.querySelectorAll("[data-bib-toggle]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const block = button.closest(".pub-entry").querySelector(".bibtex");
+        const isHidden = block.hasAttribute("hidden");
+        if (isHidden) {
+          block.removeAttribute("hidden");
+          button.setAttribute("aria-expanded", "true");
+          button.textContent = "Hide BibTeX";
+        } else {
+          block.setAttribute("hidden", "");
+          button.setAttribute("aria-expanded", "false");
+          button.textContent = "BibTeX";
+        }
+      });
+    });
 
-  <script src="assets/vendor/animateNumber/jquery.animateNumber.min.js"></script>
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 420) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
 
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-
-  <script src="assets/js/google-maps.js"></script>
-    
-  <script src="assets/js/topbar-virtual.js"></script>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
-  
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
