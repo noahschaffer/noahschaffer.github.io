@@ -707,6 +707,7 @@
       .hero-sidebar {
         flex-direction: row;
         border-radius: 24px;
+        max-height: 280px;
       }
 
       .hero-photo {
@@ -754,7 +755,7 @@
       }
 
       .hero-copy,
-      .hero-card,
+      .hero-sidebar,
       .content-card,
       .publications,
       .teaching,
@@ -770,23 +771,48 @@
         padding: 24px 20px;
       }
 
-      .hero-card {
-        min-height: 640px;
-        padding: 28px 22px 168px;
-      }
-
       .hero-copy {
-        max-width: none;
+        padding: 28px 22px;
       }
 
-      .hero-map {
-        justify-content: center;
-        align-items: flex-end;
-        padding: 90px 10px 26px;
+      .hero-sidebar {
+        flex-direction: column;
+      }
+
+      .hero-photo {
+        max-width: none;
+        max-height: 320px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.4rem, 12vw, 3.5rem);
+      }
+
+      .hero-tags {
+        gap: 8px;
+      }
+
+      .hero-tag {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+
+      .hero-mountains svg {
+        bottom: -120px;
       }
 
       .teaching-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
+      }
+
+      .pub-entry-title {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .pub-venue-badge {
+        align-self: flex-start;
       }
     }
 
@@ -959,20 +985,10 @@
       <section class="teaching" id="teaching">
         <div class="section-label">Teaching</div>
         <div class="teaching-grid">
-          <article class="teaching-card">
-            <div class="teaching-term">Spring 2022</div>
-            <h3>CS 396/496 · Deep Learning</h3>
-            <p>Peer Mentor at Northwestern University under <a href="https://bryan-pardo.github.io/">Bryan Pardo</a>.</p>
-          </article>
-          <article class="teaching-card">
-            <div class="teaching-term">Fall 2021</div>
-            <h3>CS 349 · Machine Learning</h3>
-            <p>Peer Mentor at Northwestern University under <a href="https://bryan-pardo.github.io/">Bryan Pardo</a> and <a href="https://zachwd.com/">Zach Wood-Doughty</a>.</p>
-          </article>
-          <article class="teaching-card">
-            <div class="teaching-term">Spring 2021</div>
-            <h3>CS 349 · Machine Learning</h3>
-            <p>Peer Mentor at Northwestern University under <a href="https://compphotolab.northwestern.edu/people/oliver-ollie-cossairt/">Ollie Cossairt</a>.</p>
+            <article class="teaching-card">
+            <div class="teaching-term">Winter 2026</div>
+            <h3>CSDA 294 · Readings in Digital Arts</h3>
+            <p>Instructor for the Digital Arts reading course for <a href="https://digitalarts.cs.dartmouth.edu/">MSDA </a> students.</p>
           </article>
         </div>
       </section>
