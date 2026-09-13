@@ -16,14 +16,14 @@
   <meta property="og:description" content="Research in human-AI co-creation for music, generative audio editing, source separation, and creative control for audio systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://noahschaffer.github.io/">
-  <meta property="og:image" content="https://noahschaffer.github.io/assets/img/noah_2023.png">
+  <meta property="og:image" content="https://noahschaffer.github.io/assets/img/noah_2026.jpeg">
   <meta property="og:image:alt" content="Portrait of Noah Schaffer">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Noah Schaffer | PhD Student in Computer Science at Dartmouth">
   <meta name="twitter:description" content="Research in human-AI co-creation for music, generative audio editing, source separation, and creative machine learning tools.">
-  <meta name="twitter:image" content="https://noahschaffer.github.io/assets/img/noah_2023.png">
+  <meta name="twitter:image" content="https://noahschaffer.github.io/assets/img/noah_2026.jpeg">
 
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
       "@type": "Person",
       "name": "Noah Schaffer",
       "url": "https://noahschaffer.github.io/",
-      "image": "https://noahschaffer.github.io/assets/img/noah_2023.png",
+      "image": "https://noahschaffer.github.io/assets/img/noah_2026.jpeg",
       "jobTitle": "PhD Student in Computer Science",
       "description": "PhD student at Dartmouth researching human-AI co-creation for music, generative audio editing, source separation, and creative control.",
       "affiliation": {
@@ -77,6 +77,21 @@
       --radius-md: 18px;
       --radius-sm: 12px;
       --max-width: 1180px;
+
+      /* Hero portrait framing. Tweak these five to crop the photo:
+         --photo-zoom: 1 fills the frame, higher values zoom in (1.15 = 15% closer).
+         --photo-x / --photo-y: the focal point held steady while zooming.
+         --photo-shift-x / --photo-shift-y: nudge the photo inside the frame
+         (any CSS length; % is relative to the frame, positive = right / down).
+         Zooming is what creates room to shift into, and the focal point decides
+         how that room is split, so the limits before the frame edge shows are:
+         down (zoom - 1) x photo-y, up (zoom - 1) x (100% - photo-y),
+         sideways (zoom - 1) x 50%. At 1.45 / 22% that is 9% down, 35% up, 22% across. */
+      --photo-zoom: 1.45;
+      --photo-x: 50%;
+      --photo-y: 22%;
+      --photo-shift-x: 0%;
+      --photo-shift-y: -10%;
     }
 
     * {
@@ -254,7 +269,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 22%;
+      object-position: var(--photo-x) var(--photo-y);
+      transform: translate(var(--photo-shift-x), var(--photo-shift-y)) scale(var(--photo-zoom));
+      transform-origin: var(--photo-x) var(--photo-y);
       display: block;
     }
 
@@ -935,7 +952,7 @@
 
           <div class="hero-sidebar">
             <div class="hero-photo">
-              <img src="assets/img/noah_2023.png" alt="Portrait of Noah Schaffer">
+              <img src="assets/img/noah_2026.jpeg" alt="Portrait of Noah Schaffer">
             </div>
             <div class="hero-links-bar">
               <a href="https://github.com/noahschaffer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
@@ -996,6 +1013,35 @@
       <section class="publications" id="publications">
         <div class="section-label">Publications</div>
         <p class="pub-intro">Selected publications. <a href="https://scholar.google.com/citations?user=olAsES8AAAAJ&hl=en">For a complete list, see Google Scholar.</a></p>
+
+        <div class="pub-year-group">
+          <h2 class="pub-year">2026</h2>
+          <p class="pub-count">1 preprint</p>
+
+          <div class="pub-list">
+            <article class="pub-entry">
+              <h3 class="pub-entry-title">
+                <span class="pub-entry-title-text"><a href="https://arxiv.org/abs/2607.19605">RIME: Enabling Large-Scale Agentic Music Post-Production</a></span>
+                <span class="pub-venue-badge">Preprint · Under review</span>
+              </h3>
+              <p class="pub-entry-meta"><strong>Noah Schaffer</strong>, Nikhil Singh</p>
+              <p class="pub-entry-venue">arXiv:2607.19605</p>
+
+              <div class="pub-entry-links">
+                <a href="https://arxiv.org/abs/2607.19605">arXiv</a>
+                <button type="button" data-bib-toggle aria-expanded="false">BibTeX</button>
+              </div>
+
+              <pre class="bibtex" hidden>@misc{schaffer2026rime,
+  title         = {RIME: Enabling Large-Scale Agentic Music Post-Production},
+  author        = {Schaffer, Noah and Singh, Nikhil},
+  year          = {2026},
+  eprint        = {2607.19605},
+  archivePrefix = {arXiv}
+}</pre>
+            </article>
+          </div>
+        </div>
 
         <div class="pub-year-group">
           <h2 class="pub-year">2022</h2>
